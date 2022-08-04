@@ -5,6 +5,7 @@ WEBSRC_PATHS = [ "./websource/" ]
 
 
 import os
+import warnings
 from lxml import etree
 
 
@@ -39,16 +40,15 @@ def parse_webpage(path_to_webpage):
         file = open(path_to_webpage, "r")
         webpage = file.read()
         file.close()
+        webpage = etree.HTML(webpage)
+        webpage = webpage.xpath("""//div[contains(@class, "detailed-result-panel--question-container")]""")
 
     except FileNotFoundError:
-        print("warn")
+        warnings.warn("No file for " + path_to_webpage)
 
-    webpage = etree.HTML(webpage)
-    query = webpage.xpath("""//div[contains(@class, "detailed-result-panel--question-container")]""")
-    print(len(query))
 
-    if len(query) > 0:
-        for question in query:
+    if len(webpage) > 0:
+        for question in webpage:
 
             __num = question.xpath(""".//span""")
             __question = question.xpath(""".//div[contains(@id, "question-prompt")]""")
@@ -72,4 +72,8 @@ if __name__ == "__main__":
 
     for path in WEBSRC_PATHS:
         for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
-            questions += parse_webpage(path + "/" + file_name)
+            #questions += parse_webpage(path + "/" + file_name)
+            questions += parse_webpage("C_TS410_1909 & 2020 dumps SAP Business Process Integration _ Udemy.html")
+
+    #for x in questions:
+        #print(x)
