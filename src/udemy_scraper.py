@@ -5,6 +5,8 @@ WEBSRC_PATHS = [ "./websource/" ]
 
 
 import os
+import warnings
+import ex_questions
 from lxml import etree
 
 
@@ -39,16 +41,15 @@ def parse_webpage(path_to_webpage):
         file = open(path_to_webpage, "r")
         webpage = file.read()
         file.close()
+        webpage = etree.HTML(webpage)
+        webpage = webpage.xpath("""//div[contains(@class, "detailed-result-panel--question-container")]""")
 
     except FileNotFoundError:
-        print("warn")
+        warnings.warn("No file for " + path_to_webpage)
 
-    webpage = etree.HTML(webpage)
-    query = webpage.xpath("""//div[contains(@class, "detailed-result-panel--question-container")]""")
-    print(len(query))
 
-    if len(query) > 0:
-        for question in query:
+    if len(webpage) > 0:
+        for question in webpage:
 
             __num = question.xpath(""".//span""")
             __question = question.xpath(""".//div[contains(@id, "question-prompt")]""")
@@ -73,3 +74,5 @@ if __name__ == "__main__":
     for path in WEBSRC_PATHS:
         for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
             questions += parse_webpage(path + "/" + file_name)
+
+    ex_questions.to_Gift(questions)

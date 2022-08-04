@@ -1,0 +1,80 @@
+::Question 1:: Which of the following can you use to locate new suppliers and automate some purchasing processes you might have with them? Please choose the correct answer.{=SAP Ariba ~SAP Fieldglass ~SAP Concur ~SAP Leonardo }
+
+::Question 2:: Which objects can be assigned to a Purchasing Organization? There are 2 correct answers to this question.{=Plant ~Controlling area =Vendor ~Material master }
+
+::Question 3:: What needs to be entered to create a business partner? Please choose the correct answer.{~Business partner type ~Partner functions =Business partner role ~Account group }
+
+::Question 4:: What can a planned order be converted to? There are 2 correct answers for this question.{~A purchase order =A purchase requisition =A production order ~A planned independent requirement }
+
+::Question 5:: What can a successful MRP run create?Please choose the correct answer.{~Planned independent requirements ~Reservations =Dependent requirements ~Purchase orders }
+
+::Question 6:: In a project, what is linked via relationships? Please choose the correct answer.{~Networks ~Work breakdown structure elements ~Project definitions =Activities }
+
+::Question 7:: What assigns actual costs to a project? Please choose the correct answer.{=Posting a vendor's invoice ~Saving a purchase order ~Processing a cost forecast ~Calculating project interest }
+
+::Question 8:: What is the main criterion for defining an asset? Please choose the correct answer.{~Asset Transaction Type ~Depreciation Key =Asset class ~Depreciation Area }
+
+::Question 9:: Which SAP Fiori application types use the SAP HANA data layer directly? There are 2 correct answers for this question.{=Analytical =Factsheet ~Web Dynpro ~Transactional }
+
+::Question 10:: What activities can an employee complete using employee self-service? There are 3 correct answers for this question.{=Enroll in a training course =Update banking information ~Perform compensation planning =Enter work times ~Recruit employees }
+
+::Question 11:: How do you use the result of a released standard cost estimate? There are 3 correct answers for this question.{=To update the current standard price in the material master record ~To determine a material sales price in Sales and Distribution =To calculate the price of an activity type =To calculate the plan costs in a production order ~To determine the base costs used to calculate overhead }
+
+::Question 12:: What must you do in a purchase order to purchase a material for a cost center? Please choose the correct answer.{~Change the material type appropriately ~Enter a purchase order item category =Enter an account assignment category ~Change the account to a cost element }
+
+::Question 13:: What can be assigned to a profit center? There are 2 correct answers to this question.{~Operating concern =Asset =Material ~Company code ~Organizational unit }
+
+::Question 14:: To which application areas can Cross-Application Time Sheet (CATS) data be transferred directly? There are 3 correct answers to this question.{~Financial Accounting (FI) ~Production Planning (PP) =Human Capital Management (HCM) =Project System (PS) =Customer Services (CS) }
+
+::Question 15:: Which of the following is a feature of Streamlined Procurement? Please choose the correct answer.{=Self-service requisitioning ~Source assignment ~Invoice processing ~Supplier evaluation }
+
+::Question 16:: In what step of the purchase-to-pay process is a purchase requisition generated? Please choose the correct answer.{~Source of supply determination ~Invoice verification =Determination of requirements ~Vendor selection }
+
+::Question 17:: In which situation would you create an equipment master record? There are 2 correct answers for this question.{~To functionality represent the technical system structures in your company =To record the usage time of an object at a functional location =To report and track preventive maintenance tasks for an object ~To report the effects of usage on the likelihood of damage to the installed equipment }
+
+::Question 18:: Which of the following is the correct hierarchy of organizational structure elements in SAP S/4HANA? Please choose the correct answer.{=1. Operating concern 2. Controlling area 3. Company code 4. Plant ~1. Sales organization 2. Plant 3. Division 4. Storage location ~1. Company code 2. Controlling area 3. Sales organization 4. Plant ~1. Company code 2. Controlling area 3. Organizational unit 4. Operating concern }
+
+::Question 19:: Which of the following are Management Accounting organizational levels? There are 2 correct answers for this question.{=Operating concern ~Company code ~Segment =Controlling area }
+
+::Question 20:: What print technologies does SAP S/4HANA output management support? There are 2 correct answers to this question.{=Smart Forms ~Adobe LiveCycle Designer ~Microsoft Excel =Adobe forms using fragments }
+
+::Question 21:: You have created an asset master data record. Which other master data record can be created synchronously? Please choose the correct answer.{~Cost center =Equipment ~Functional location ~Primary cost element }
+
+::Question 22:: Which document posts directly to the universal journal? There are 3 correct answers for this question{=Material Ledger document ~Sales document =Profitability Analysis document ~Material document =Asset Accounting document }
+
+::Question 23:: A goods issue is posted against a production order. What are the results? There are 3 correct answers for this question.{~Internal labor costs are posted =Actual costs are updated in the production order ~A warehouse task is created =A controlling document is created =The material reservation is reduced }
+
+::Question 24:: What must two company codes have in common if you want to link them to the same Controlling Area? There are 2 correct answers for this question.{~Country ~Company code currency =Fiscal year variant =Operational chart of accounts }
+
+::Question 25:: What document, when saved, creates a commitment for an internal order? Please choose the correct answer.{~Material document ~Accounting document ~Sales order =Purchase order }
+
+::Question 26:: What type of document is generated for an external network activity? Please choose the correct answer.{~Sales order =Purchase requisition ~Reservation ~Planned order }
+
+::Question 27:: You are posting a document. In the line item, for which account must you enter a transaction type? Please choose the correct answer.{~Material account ~Vendor account ~General ledger account =Asset account }
+
+::Question 28:: Which processes can be automatically performed when you post an order confirmation for a production order? There are 2 correct answers to this question.{~Goods issue =Post actual costs ~Order settlement =Goods receipt ~Variance calculation }
+
+::Question 29:: Which enterprise structure elements are in a sales area? There are 2 correct answers for this question.{~Company code =Division ~Plant =Distribution channel }
+
+::Question 30:: How do you view all records created for an employee? Please choose the correct answer.{~Personnel action =Personnel file ~Organizational assignment ~Basic personal data }
+
+::Question 31:: Which of the following sequences of purchase-to-pay process steps is valid? Please choose the correct answer.{~Determination of requirements Purchase order handling Handling of payments Goods receipt Invoice verification ~Vendor selection Source of supply determination Purchase order monitoring Goods receipt Handling of payments ~Source of supply determination Vendor selection Determination of requirements Purchase order handling Goods receipt =Determination of requirements Vendor selection Purchase order handling Goods receipt Invoice verification }
+
+::Question 32:: Which of the following master records are directly assigned to a Company Code? There are 2 correct answers to this question.{=Fixed asset =Cost center ~Material master ~Activity type }
+
+::Question 33:: What can you record during overall completion confirmation of a maintenance order? Please choose the correct answer.{~Notification completion ~Serial numbers ~Planned time =Measurements }
+
+::Question 34:: What is the result of posting a vendor’s invoice? Please choose the correct answer.{~The material document is generated =The purchase order history is updated ~The vendor’s account is cleared of open items ~The purchase requisition is updated }
+
+::Question 35:: What does the posting key control? There are 2 correct answers to this question.{=Account type ~G/L document number =Posting as a credit or a debit ~Posting date }
+
+::Question 36:: What fields are required when you create a cost center? There are 2 correct answers for this question{~Department =Hierarchy area ~Address =Person responsible }
+
+::Question 37:: What is included in the structure of a maintenance order? Please choose the correct answer.{~Construction type =Plan costs ~Activity ~Bill of Material }
+
+::Question 38:: Which of the following organizational levels are defined in SAP S/4HANA Finance? There are 2 correct answers for this question{=Company code ~Payroll area =Segment ~Controlling area }
+
+::Question 39:: What tasks are performed for legal reporting? There are 2 correct answers for this question.{~Track company car costs =Create a profit and loss statement =Perform inventory valuation ~Calculate production variances }
+
+::Question 40:: What master data in the activity type is used to post an activity allocation? Please choose the correct answer.{~Non-operating expense =Secondary cost element ~Balance sheet account ~Primary cost element }
+
