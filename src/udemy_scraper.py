@@ -1,6 +1,6 @@
 #CONSTS
-WEBSRC_PATHS = [ "./websource/" ]
-
+WEBSRC_PATHS = [ "./websource/1", "./websource/2" ]
+OUTPUT_PATH = "./output/"
 
 
 
@@ -20,7 +20,7 @@ class Question:
         self.answers = answers
 
     def __str__(self):
-        return ",".join([ self.number, self.question, str(self.answers) ])
+        return ",".join([ str(self.number), self.question, str(self.answers) ])
 
 
 
@@ -58,7 +58,7 @@ def parse_webpage(path_to_webpage):
             for x in range(len(__answers)):
                 __answers[x] = ( __answers[x][0].text, len(__answers[x]) == 2)
 
-            if min([len(__num), len(__question), len(__answers)]) >= 1:
+            if min([len(__num), len(__question), len(__answers)]) > 0:
                 questions.append(Question(__num[0].text, __question[0].text, __answers))
 
     return questions
@@ -69,10 +69,15 @@ def parse_webpage(path_to_webpage):
 
 
 if __name__ == "__main__":
-    questions = []
-
+    """ writes every question from ./websource into files """
+    
     for path in WEBSRC_PATHS:
-        for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
-            questions += parse_webpage(path + "/" + file_name)
+        par_dir = path.split("/")[-1] if len(path.split("/")[-1]) > 0 else path.split("/")[-2]
+        os.makedirs(OUTPUT_PATH + par_dir, exist_ok=True)
 
-    ex_questions.to_Gift(questions)
+        #x = 0
+        for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
+            questions = parse_webpage(path + "/" + file_name)
+            #for i in range(len(questions)): questions[i].number = x = x+1
+            ex_questions.to_Gift(questions, OUTPUT_PATH + par_dir + "/" + file_name)
+

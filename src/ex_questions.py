@@ -58,8 +58,8 @@ def check_for_mulAns(questions):
 
 
 
-def to_Gift(questions):
-    with open('questions-gift.txt', 'w') as f:
+def to_Gift(questions, path_to_file):
+    with open(path_to_file, 'w') as f:
         count = 1
         for question in questions:
             f.write('::Question ')
