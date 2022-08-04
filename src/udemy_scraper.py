@@ -84,8 +84,8 @@ if __name__ == "__main__":
             #for i in range(len(questions)): questions[i].number = x = x+1
             ex_questions.to_Gift(questions, OUTPUT_PATH + par_dir + "/" + file_name)
 
-            print("Translating: ",file_name)
-
-            questions_ger = ex_questions.trans_questions(questions)
-            ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
+            ## TRANSLATION ##
+            #print("Translating: ",file_name)
+            #questions_ger = ex_questions.trans_questions(questions)
+            #ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
 

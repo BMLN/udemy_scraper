@@ -36,7 +36,7 @@ def trans_questions(questions):
 
     translated_questions = [] 
     for question in questions:
-        qtext_ger = next(filter(lambda tr: tr.origin == question.question, translated)).text
+        qtext_ger = next(filter(lambda tr: tr.origin == question.question, translated)).text.replace(')', '')
         answers = []
         for answer in question.answers:
             atex_ger = next(filter(lambda tr: tr.origin == answer[0], translated)).text
@@ -68,7 +68,7 @@ def to_Gift(questions, path_to_file):
             f.write('::Question ')
             f.write(str(count))
             f.write(':: ')
-            f.write(question.question)
+            f.write(question.question.replace('\n\n', '\n'))
             f.write('{')
             right_answer_val = round(100/count_right_answers(question),5)
             for answer in question.answers:
