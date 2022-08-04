@@ -6,6 +6,7 @@ WEBSRC_PATHS = [ "./websource/" ]
 
 import os
 import warnings
+import ex_questions
 from lxml import etree
 
 
@@ -72,8 +73,6 @@ if __name__ == "__main__":
 
     for path in WEBSRC_PATHS:
         for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
-            #questions += parse_webpage(path + "/" + file_name)
-            questions += parse_webpage("C_TS410_1909 & 2020 dumps SAP Business Process Integration _ Udemy.html")
+            questions += parse_webpage(path + "/" + file_name)
 
-    #for x in questions:
-        #print(x)
+    ex_questions.to_Gift(questions)
