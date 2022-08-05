@@ -64,12 +64,24 @@ def parse_webpage(path_to_webpage):
     return questions
 
 
+all_questions = []
 
+def is_contained(question):
+    if question.question not in (quest.question for quest in all_questions):
+        all_questions.append(question)
+        return question
+    else:
+        #print('Question '+question.number+' is double, will be deleted')
+        return None 
+
+def filter_questions(questions):
+    return list(filter(lambda question: is_contained(question), questions))
 
 
 
 if __name__ == "__main__":
     """ writes every question from ./websource into files """
+    count_doubled = 0
     
     for path in WEBSRC_PATHS:
         par_dir = path.split("/")[-1] if len(path.split("/")[-1]) > 0 else path.split("/")[-2]
@@ -81,11 +93,14 @@ if __name__ == "__main__":
             print("Converting: ", file_name)
 
             questions = parse_webpage(path + "/" + file_name)
+            questions_filtered = filter_questions(questions)
+            count_doubled += len(questions) - len(questions_filtered)
             #for i in range(len(questions)): questions[i].number = x = x+1
-            ex_questions.to_Gift(questions, OUTPUT_PATH + par_dir + "/" + file_name)
+            ex_questions.to_Gift(questions_filtered, OUTPUT_PATH + par_dir + "/" + file_name)
 
             ## TRANSLATION ##
             #print("Translating: ",file_name)
-            #questions_ger = ex_questions.trans_questions(questions)
+            #questions_ger = ex_questions.trans_questions(questions_filtered)
             #ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
+    print('Deleted '+str(count_doubled)+' questions because they were doubled.')
 
