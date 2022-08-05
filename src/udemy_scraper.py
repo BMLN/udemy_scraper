@@ -1,6 +1,6 @@
 #CONSTS
 WEBSRC_PATHS = [ "../websource/1", "../websource/2", "../websource/3" ]
-OUTPUT_PATH = "./output/"
+OUTPUT_PATH = "../output/"
 
 
 
