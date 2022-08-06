@@ -1,13 +1,15 @@
-#CONSTS
-WEBSRC_PATHS = [ "../websource/1", "../websource/2", "../websource/3" ]
-OUTPUT_PATH = "../output/"
-
-
-
 import os
 import warnings
 import ex_questions
+import argparse
 from lxml import etree
+
+
+#CONSTS
+WEBSRCS = [ str(y[0]) + "/" + str(x) for y in os.walk("../websource") for x in y[2] ]
+OUTPUT_PATH = "../output"
+
+
 
 
 
@@ -83,24 +85,31 @@ if __name__ == "__main__":
     """ writes every question from ./websource into files """
     count_doubled = 0
     
-    for path in WEBSRC_PATHS:
-        par_dir = path.split("/")[-1] if len(path.split("/")[-1]) > 0 else path.split("/")[-2]
-        os.makedirs(OUTPUT_PATH + par_dir, exist_ok=True)
+    arg_parser = argparse.ArgumentParser(description="writes questions from udemy websources into files")
+    arg_parser.add_argument("--src", type=list, help="all the source files", default=WEBSRCS)
+    arg_parser.add_argument("--dest", type=str, help="the destination folder for the generated files", default=OUTPUT_PATH)
+    args = arg_parser.parse_args()
 
-        #x = 0
-        for file_name in list(filter(lambda file_name: file_name.endswith(".html"), os.listdir(path))):
+    args.src = list(filter(lambda file_name: file_name.endswith(".html"), args.src))
 
-            print("Converting: ", file_name)
+    #x = 0
+    for src_file in args.src:
+        par_dir = src_file.split("/")[-2]
+        file_name = src_file.split("/")[-1]
+        os.makedirs(OUTPUT_PATH + "/" + par_dir, exist_ok=True)
 
-            questions = parse_webpage(path + "/" + file_name)
-            questions_filtered = filter_questions(questions)
-            count_doubled += len(questions) - len(questions_filtered)
-            #for i in range(len(questions)): questions[i].number = x = x+1
-            ex_questions.to_Gift(questions_filtered, OUTPUT_PATH + par_dir + "/" + file_name)
+        print("Converting: ", file_name)
 
-            ## TRANSLATION ##
-            #print("Translating: ",file_name)
-            #questions_ger = ex_questions.trans_questions(questions_filtered)
-            #ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
+        questions = parse_webpage(src_file)
+        questions_filtered = filter_questions(questions)
+        count_doubled += len(questions) - len(questions_filtered)
+        #for i in range(len(questions)): questions[i].number = x = x+1
+        ex_questions.to_Gift(questions_filtered, OUTPUT_PATH + "/" + par_dir + "/" + file_name)
+
+        ## TRANSLATION ##
+        #print("Translating: ",file_name)
+        #questions_ger = ex_questions.trans_questions(questions_filtered)
+        #ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
+
     print('Deleted '+str(count_doubled)+' questions because they were doubled.')
 
