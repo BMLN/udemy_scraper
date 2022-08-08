@@ -95,15 +95,15 @@ if __name__ == "__main__":
         
         par_dir = src_file.split("/")[-2] if "/" in src_file else "./"
         file_name = src_file.split("/")[-1] if "/" in src_file else src_file
-        os.makedirs(os.path.join(OUTPUT_PATH, par_dir), exist_ok=True)
 
         print("Converting: ", file_name)
-        
+
         questions = parse_webpage(src_file)
         questions_filtered = filter_questions(questions)
         count_doubled += len(questions) - len(questions_filtered)
         #for i in range(len(questions)): questions[i].number = x = x+1
-        ex_questions.to_Gift(questions_filtered, OUTPUT_PATH + "/" + par_dir + "/" + file_name)
+        os.makedirs(os.path.join(OUTPUT_PATH, par_dir), exist_ok=True)
+        ex_questions.to_Gift(questions_filtered, os.path.join(OUTPUT_PATH, par_dir, file_name))
 
         ## TRANSLATION ##
         #print("Translating: ",file_name)
