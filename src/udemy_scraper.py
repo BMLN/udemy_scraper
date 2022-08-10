@@ -95,15 +95,15 @@ if __name__ == "__main__":
         
         par_dir = src_file.split("/")[-2] if "/" in src_file else "./"
         file_name = src_file.split("/")[-1] if "/" in src_file else src_file
-        file_name = file_name.replace(".html", "")
+        file_name = file_name.replace(".html", ".txt")
 
         print("Converting: ", file_name)
 
         questions = parse_webpage(src_file)
         questions_filtered = filter_questions(questions) # needed for filter
         count_doubled += len(questions) - len(questions_filtered) # needed for filter
-        os.makedirs(os.path.join(OUTPUT_PATH, par_dir, ".html"), exist_ok=True)
-        ex_questions.to_Gift(questions_filtered, os.path.join(OUTPUT_PATH, par_dir, file_name, ".txt")) # needed for filter
+        os.makedirs(os.path.join(OUTPUT_PATH, par_dir), exist_ok=True)
+        ex_questions.to_Gift(questions_filtered, os.path.join(OUTPUT_PATH, par_dir, file_name)) # needed for filter
         #ex_questions.to_Gift(questions, os.path.join(OUTPUT_PATH, par_dir, file_name)) # run without filter
 
         ## TRANSLATION ##
