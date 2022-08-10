@@ -99,16 +99,18 @@ if __name__ == "__main__":
         print("Converting: ", file_name)
 
         questions = parse_webpage(src_file)
-        #questions_filtered = filter_questions(questions) # needed for filter
-        #count_doubled += len(questions) - len(questions_filtered) # needed for filter
+        questions_filtered = filter_questions(questions) # needed for filter
+        count_doubled += len(questions) - len(questions_filtered) # needed for filter
         os.makedirs(os.path.join(OUTPUT_PATH, par_dir), exist_ok=True)
-        #ex_questions.to_Gift(questions_filtered, os.path.join(OUTPUT_PATH, par_dir, file_name)) # needed for filter
-        ex_questions.to_Gift(questions, os.path.join(OUTPUT_PATH, par_dir, file_name)) # run without filter
+        ex_questions.to_Gift(questions_filtered, os.path.join(OUTPUT_PATH, par_dir, file_name)) # needed for filter
+        #ex_questions.to_Gift(questions, os.path.join(OUTPUT_PATH, par_dir, file_name)) # run without filter
 
         ## TRANSLATION ##
         #print("Translating: ",file_name)
         #questions_ger = ex_questions.trans_questions(questions_filtered)
-        #ex_questions.to_Gift(questions_ger, OUTPUT_PATH + par_dir + "/GER_" + file_name)
+        #file_name_ger = 'GER_' + file_name
+        #ex_questions.to_Gift(questions_ger, os.path.join(OUTPUT_PATH, par_dir, file_name_ger))
+        
 
     print('Deleted '+str(count_doubled)+' questions because they were doubled.')
 

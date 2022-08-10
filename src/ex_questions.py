@@ -56,8 +56,11 @@ def check_for_mulAns(questions):
             mulAns_count += 1
     print('Total number of question with mul. right answers: ',mulAns_count)
 
-def count_right_answers(question):
-    return len(list(filter(lambda answer: answer[1] == True, question.answers)))
+def count_right_wrong_answers(question, b):
+    if b == True:
+        return len(list(filter(lambda answer: answer[1] == True, question.answers)))
+    elif b == False:
+        return len(list(filter(lambda answer: answer[1] == False, question.answers)))
 
 
 
@@ -70,12 +73,15 @@ def to_Gift(questions, path_to_file):
             f.write(':: ')
             f.write(question.question.replace('\n\n', '\n'))
             f.write('{')
-            right_answer_val = round(100/count_right_answers(question),5)
+            right_answer_val = round(100/count_right_wrong_answers(question, True),5)
+            c_wrong_answers = count_right_wrong_answers(question, False)
+            if c_wrong_answers >= 1:
+                wrong_answer_val = round(100/count_right_wrong_answers(question, False),5)
             for answer in question.answers:
                 if answer[1] == True:
                    f.write('~%'+str(right_answer_val)+'%')                 
                 else:
-                   f.write('~%-'+str(right_answer_val)+'%')
+                   f.write('~%-'+str(wrong_answer_val)+'%')
                 f.write(answer[0])
                 f.write(' ')
             f.write('}')
