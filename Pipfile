@@ -13,4 +13,4 @@ googletrans = "==3.1.0a0"
 python_version = "3.8"
 
 [scripts]
-start = "bash -c 'cd src && python3 udemy_scraper.py && cd ..'"
+starter = "bash -c 'cd src && python3 udemy_scraper.py $@ && cd ..' udemy_scraper"
