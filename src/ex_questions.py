@@ -73,17 +73,28 @@ def to_Gift(questions, path_to_file):
             f.write(':: ')
             f.write(question.question.replace('\n\n', '\n'))
             f.write('{')
+            c_right_answers = count_right_wrong_answers(question, True)
             right_answer_val = round(100/count_right_wrong_answers(question, True),5)
             c_wrong_answers = count_right_wrong_answers(question, False)
             if c_wrong_answers >= 1:
                 wrong_answer_val = round(100/count_right_wrong_answers(question, False),5)
-            for answer in question.answers:
-                if answer[1] == True:
-                   f.write('~%'+str(right_answer_val)+'%')                 
-                else:
-                   f.write('~%-'+str(wrong_answer_val)+'%')
-                f.write(answer[0])
-                f.write(' ')
+
+            if c_right_answers > 1:
+                for answer in question.answers:
+                    if answer[1] == True:
+                        f.write('~%'+str(right_answer_val)+'%')                 
+                    else:
+                        f.write('~%-'+str(wrong_answer_val)+'%')
+                    f.write(answer[0])
+                    f.write(' ')
+            elif c_right_answers == 1:
+                for answer in question.answers:
+                    if answer[1] == True:
+                        f.write('=')
+                    else:
+                        f.write('~')
+                    f.write(answer[0])
+                    f.write(' ')
             f.write('}')
             f.write('\n')
             f.write('\n')

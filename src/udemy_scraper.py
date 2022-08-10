@@ -107,10 +107,10 @@ if __name__ == "__main__":
         #ex_questions.to_Gift(questions, os.path.join(OUTPUT_PATH, par_dir, file_name)) # run without filter
 
         ## TRANSLATION ##
-        #print("Translating: ",file_name)
-        #questions_ger = ex_questions.trans_questions(questions_filtered)
-        #file_name_ger = 'GER_' + file_name
-        #ex_questions.to_Gift(questions_ger, os.path.join(OUTPUT_PATH, par_dir, file_name_ger))
+        print("Translating: ",file_name)
+        questions_ger = ex_questions.trans_questions(questions_filtered)
+        file_name_ger = 'GER_' + file_name
+        ex_questions.to_Gift(questions_ger, os.path.join(OUTPUT_PATH, par_dir, file_name_ger))
         
 
     print('Deleted '+str(count_doubled)+' questions because they were doubled.')
