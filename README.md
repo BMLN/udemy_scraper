@@ -3,4 +3,4 @@
 run:
 
     pipenv install
-    pipenv run start
+    pipenv run start [-h] [--src SRC [SRC ...]] [--dest DEST] [--translate]
